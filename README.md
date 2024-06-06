@@ -12,3 +12,7 @@ Note: This app is being hosted on a free tier instance, it may be disabled after
 5. After installation is completed, run ```node app.js``` or ```nodemon app.js``` (for hot reload) to start the app.
 
 **Note: Its usually not a good practice to commit .env file but it was pushed intentionally to show as an example**
+
+Tech Stack:
+![image](https://github.com/LC-GHub/OneST-frontend/assets/92838415/8e95865f-a3d1-4a70-ac2e-c73bf3a39b20)
+![image](https://github.com/LC-GHub/OneST-frontend/assets/92838415/98188a43-5402-443e-bd11-8f4b2be9d732)
