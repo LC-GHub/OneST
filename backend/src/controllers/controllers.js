@@ -10,9 +10,9 @@ const weatherResponseModel = require('../model/weatherResponseModel');
 const checkUEN = (req, res)=>{ 
 	
     uen = req.body.uen
-    if (!uen) {
-        const response = new uenResponseModel(false, "", "UEN is required")
-        return res.status(400).json(response);
+    if (!uen || uen === '') {
+        const response = new uenResponseModel(false, "", "UEN cannot be blank")
+        return res.status(200).json(response);
     }
 
     if (isValidUEN(uen)) {
@@ -34,24 +34,23 @@ const processWeatherReq = async (req, res, next)=>{
             throw new Error("Invalid response format from weather query");
         }
 
-        const forecast = findForecastsArea(forecastResp.items[0].forecasts, location)
+        const forecast = findForecastsArea(forecastResp.items[0].forecasts, location);
+
         let response;
 
         if (!forecast) {
-            console.log("HI")
-            response = new weatherResponseModel(false, location, "", "", "")
+            response = new weatherResponseModel(false, location, "", "", "");
         } else {
             const validity_start = formatDateTime(forecastResp.items[0].valid_period.start);
             const validity_end = formatDateTime(forecastResp.items[0].valid_period.end);
-            response = new weatherResponseModel(true, location, forecast, validity_start, validity_end)
+            response = new weatherResponseModel(true, forecast.area, forecast.forecast, validity_start, validity_end);
         }
         res.json(response);
     } catch (error) {
-        next(error)
+        next(error);
     }
 } 
 
-// Export of all methods as object 
 module.exports = { 
 	checkUEN, 
 	processWeatherReq 
