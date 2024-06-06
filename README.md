@@ -8,3 +8,5 @@ Visit: [OneST](https://onest-frontend.onrender.com/) OR https://onest-frontend.o
 3. Go into the directory: backend by running ```cd backend``` in your terminal
 4. Install dependencies by running ```npm install``` in your terminal
 5. After installation is completed, run ```node app.js``` or ```nodemon app.js``` (for hot reload) to start the app.
+
+**Note: Its usually not a good practice to commit .env file but it was pushed intentionally to show as an example**
